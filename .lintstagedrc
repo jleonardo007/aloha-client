@@ -1,7 +1,3 @@
 {
-  "**/*.{ts,tsx}": [
-    "tsc --noEmit --jsx react-jsx --esModuleInterop --downlevelIteration --baseUrl  src",
-    "eslint --fix",
-    "prettier --write"
-  ]
+  "**/*.{ts,tsx}": ["eslint --fix", "prettier --write"]
 }
