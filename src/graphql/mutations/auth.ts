@@ -15,7 +15,7 @@ export const SIGN_UP_WITH_EMAIL: TypedDocumentNode<UserData, EmailAuthVariabes> 
 export const SIGN_UP_WITH_GOOGLE: TypedDocumentNode<UserData, GoogleAuthVariables> = gql`
   ${USER_FRAGMENT}
   mutation signUpWithEmail($tokenInput: TokenInput!) {
-    signUpWithGoogle(googleToken: $tokenInput) {
+    signUpWithGoogle(tokenInput: $tokenInput) {
       ...User
     }
   }

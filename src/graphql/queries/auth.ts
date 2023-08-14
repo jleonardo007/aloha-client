@@ -15,7 +15,7 @@ export const SIGN_IN_WITH_EMAIL: TypedDocumentNode<UserData, EmailAuthVariabes> 
 export const SIGN_IN_WITH_GOOGLE: TypedDocumentNode<UserData, GoogleAuthVariables> = gql`
   ${USER_FRAGMENT}
   query signInWithGoogle($tokenInput: TokenInput!) {
-    signInWithGoogle(googleToken: $tokenInput) {
+    signInWithGoogle(tokenInput: $tokenInput) {
       ...User
     }
   }
