@@ -9,7 +9,7 @@ function App() {
     useCurrentUser();
   const [width, setWidth] = useState<number | undefined>(0);
 
-  if (currentUser) {
+  if (currentUser?._id) {
     return (
       <CurrentUserContext.Provider value={currentUser}>
         <h1>UI</h1>
