@@ -1,3 +1,5 @@
+import { UserData } from './user';
+
 export interface EmailAuthVariabes {
   [key: string]: { fullName?: string; email: string; password: string };
 }
@@ -13,3 +15,14 @@ export interface GetNewTokenVariables {
     _id: string;
   };
 }
+
+export enum AuthResolvers {
+  signInWithEmail = 'signInWithEmail',
+  signInWithGoogle = 'signInWithGoogle',
+  signUpWithEmail = 'signUpWithEmail',
+  signUpWithGoogle = 'signUpWithGoogle',
+}
+
+export type UserFromAuthServices<Type extends string> = {
+  [key in Type]: UserData;
+};
