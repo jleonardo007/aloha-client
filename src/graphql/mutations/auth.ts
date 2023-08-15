@@ -4,10 +4,13 @@ import {
   GoogleAuthVariables,
   GetNewTokenVariables,
 } from 'src/graphql/types/auth';
-import { UserData } from 'src/graphql/types/user';
+import { UserFromAuthServices, AuthResolvers } from 'src/graphql/types/auth';
 import { USER_FRAGMENT } from 'src/graphql/fragments';
 
-export const SIGN_UP_WITH_EMAIL: TypedDocumentNode<UserData, EmailAuthVariabes> = gql`
+export const SIGN_UP_WITH_EMAIL: TypedDocumentNode<
+  UserFromAuthServices<AuthResolvers.signUpWithEmail>,
+  EmailAuthVariabes
+> = gql`
   ${USER_FRAGMENT}
   mutation signUpWithEmail($signUpInput: CreateUserInput!) {
     signUpWithEmail(signUpInput: $signUpInput) {
@@ -16,7 +19,10 @@ export const SIGN_UP_WITH_EMAIL: TypedDocumentNode<UserData, EmailAuthVariabes> 
   }
 `;
 
-export const SIGN_UP_WITH_GOOGLE: TypedDocumentNode<UserData, GoogleAuthVariables> = gql`
+export const SIGN_UP_WITH_GOOGLE: TypedDocumentNode<
+  UserFromAuthServices<AuthResolvers.signUpWithGoogle>,
+  GoogleAuthVariables
+> = gql`
   ${USER_FRAGMENT}
   mutation signUpWithEmail($tokenInput: TokenInput!) {
     signUpWithGoogle(tokenInput: $tokenInput) {
@@ -26,7 +32,7 @@ export const SIGN_UP_WITH_GOOGLE: TypedDocumentNode<UserData, GoogleAuthVariable
 `;
 
 export const GET_NEW_REFRESH_TOKEN: TypedDocumentNode<string, GetNewTokenVariables> = gql`
-  mutation getNewRefreshToken($userdId: String!) {
-    getNewRefreshToken(userId: $userId)
+  mutation getNewRefreshToken($getNewTokenInput: GetNewTokenInput!) {
+    getNewRefreshToken(getNewTokenInput: $getNewTokenInput)
   }
 `;

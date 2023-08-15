@@ -1,13 +1,16 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
-import { USER_FRAGMENT } from 'src/graphql/fragments';
 import {
   EmailAuthVariabes,
   GoogleAuthVariables,
   GetNewTokenVariables,
 } from 'src/graphql/types/auth';
-import { UserData } from 'src/graphql/types/user';
+import { UserFromAuthServices, AuthResolvers } from 'src/graphql/types/auth';
+import { USER_FRAGMENT } from 'src/graphql/fragments';
 
-export const SIGN_IN_WITH_EMAIL: TypedDocumentNode<UserData, EmailAuthVariabes> = gql`
+export const SIGN_IN_WITH_EMAIL: TypedDocumentNode<
+  UserFromAuthServices<AuthResolvers.signInWithEmail>,
+  EmailAuthVariabes
+> = gql`
   ${USER_FRAGMENT}
   query signInWithEmail($signInInput: GetUserInput!) {
     signInWithEmail(signInInput: $signInInput) {
@@ -16,7 +19,10 @@ export const SIGN_IN_WITH_EMAIL: TypedDocumentNode<UserData, EmailAuthVariabes> 
   }
 `;
 
-export const SIGN_IN_WITH_GOOGLE: TypedDocumentNode<UserData, GoogleAuthVariables> = gql`
+export const SIGN_IN_WITH_GOOGLE: TypedDocumentNode<
+  UserFromAuthServices<AuthResolvers.signInWithGoogle>,
+  GoogleAuthVariables
+> = gql`
   ${USER_FRAGMENT}
   query signInWithGoogle($tokenInput: TokenInput!) {
     signInWithGoogle(tokenInput: $tokenInput) {
@@ -26,7 +32,7 @@ export const SIGN_IN_WITH_GOOGLE: TypedDocumentNode<UserData, GoogleAuthVariable
 `;
 
 export const GET_NEW_ACCESS_TOKEN: TypedDocumentNode<string, GetNewTokenVariables> = gql`
-  query getNewAccessToken($userId: String!) {
-    getNewAccessToken(userId: $userId)
+  query getNewAccessToken($getNewTokenInput: GetNewTokenInput!) {
+    getNewAccessToken(getNewTokenInput: $getNewTokenInput)
   }
 `;
