@@ -7,7 +7,7 @@ export function useSignUpWithEmail() {
 
   return {
     signUpWithEmail,
-    signUpData: data,
+    signUpData: data?.signUpWithEmail,
     signUpError: error,
     isSignUpLoading: loading,
   };
@@ -18,7 +18,7 @@ export function useSignInWithEmail() {
 
   return {
     signInWithEmail,
-    signInData: data,
+    signInData: data?.signInWithEmail,
     signInError: error,
     isSignInLoading: loading,
   };
@@ -29,7 +29,7 @@ export function useSignUpWithGoogle() {
 
   return {
     signUpWithGoogle,
-    googleSignUpData: data,
+    googleSignUpData: data?.signUpWithGoogle,
     googleSignUpError: error,
     isGoogleSignUpLoading: loading,
   };
@@ -40,7 +40,7 @@ export function useSignInWithGoogle() {
 
   return {
     signInWithGoogle,
-    googleSignInData: data,
+    googleSignInData: data?.signInWithGoogle,
     googleSignInError: error,
     isGoogleSignInLoading: loading,
   };
