@@ -1,6 +1,10 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
 import { USER_FRAGMENT } from 'src/graphql/fragments';
-import { EmailAuthVariabes, GoogleAuthVariables } from 'src/graphql/types/auth';
+import {
+  EmailAuthVariabes,
+  GoogleAuthVariables,
+  GetNewTokenVariables,
+} from 'src/graphql/types/auth';
 import { UserData } from 'src/graphql/types/user';
 
 export const SIGN_IN_WITH_EMAIL: TypedDocumentNode<UserData, EmailAuthVariabes> = gql`
@@ -21,7 +25,7 @@ export const SIGN_IN_WITH_GOOGLE: TypedDocumentNode<UserData, GoogleAuthVariable
   }
 `;
 
-export const GET_NEW_ACCESS_TOKEN = gql`
+export const GET_NEW_ACCESS_TOKEN: TypedDocumentNode<string, GetNewTokenVariables> = gql`
   query getNewAccessToken($userId: String!) {
     getNewAccessToken(userId: $userId)
   }
