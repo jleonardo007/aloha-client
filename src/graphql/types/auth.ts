@@ -7,3 +7,9 @@ export interface GoogleAuthVariables {
     tokenFromGoogle: string;
   };
 }
+
+export interface GetNewTokenVariables {
+  getNewTokenInput: {
+    _id: string;
+  };
+}
