@@ -61,3 +61,17 @@ export const BUTTONS: ButtonsShape = {
     type: 'submit',
   },
 };
+
+export const AUTH_VALIDATION = {
+  fullNameMaxLength: 60,
+  passwordMinLength: 8,
+  validEmail:
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+};
+
+export const ERROR_MESSAGES = {
+  email: 'invalid email address',
+  password: 'too short password',
+  fullName: 'too long name',
+  required: 'this field is required',
+};
