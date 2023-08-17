@@ -5,8 +5,14 @@ import useCurrentUser from 'src/hooks/current-user';
 import { GOOGLE_CLIENT_ID } from 'src/constants/auth';
 
 function App() {
-  const { CurrentUserContext, currentUser, getCurrentUser, getCurrentUserFromGoogle } =
-    useCurrentUser();
+  const {
+    CurrentUserContext,
+    currentUser,
+    error,
+    isLoading,
+    getCurrentUser,
+    getCurrentUserFromGoogle,
+  } = useCurrentUser();
   const [width, setWidth] = useState<number | undefined>(0);
 
   if (currentUser?._id) {
@@ -30,6 +36,8 @@ function App() {
         getCurrentUser={getCurrentUser}
         getCurrentUserFromGoogle={getCurrentUserFromGoogle}
         widthForGoogleButton={width}
+        error={error}
+        isLoading={isLoading}
       />
     </GoogleOAuthProvider>
   );

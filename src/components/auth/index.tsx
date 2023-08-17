@@ -35,7 +35,14 @@ function AuthLinks({ text, linkText, onClick }: AuthLinksProps) {
   );
 }
 
-function AuthForm({ signUpForm, children, getCurrentUser, toggleForm }: AuthFormProps) {
+function AuthForm({
+  signUpForm,
+  children,
+  error,
+  isLoading,
+  getCurrentUser,
+  toggleForm,
+}: AuthFormProps) {
   const [errorMessages, setErrorMessages] = useState({
     fullName: '',
     email: '',
@@ -114,6 +121,9 @@ function AuthForm({ signUpForm, children, getCurrentUser, toggleForm }: AuthForm
   return (
     <form className="h-full pt-4" onSubmit={submitHandler} noValidate>
       <h1 className="mb-4 ml-8 text-4xl text-gray-700 capitalize">{AUTH_TEXTS.mainText}</h1>
+      {error && (
+        <h2 className="mb-4 text-center text-xl text-red-600 capitalize">{error.message}</h2>
+      )}
       {signUpForm && (
         <div className="w-4/5 mx-auto mb-2">
           <Input
@@ -150,6 +160,7 @@ function AuthForm({ signUpForm, children, getCurrentUser, toggleForm }: AuthForm
         <Button
           type={signUpForm ? BUTTONS.signUp.type : BUTTONS.signIn.type}
           label={signUpForm ? BUTTONS.signUp.label : BUTTONS.signIn.label}
+          isLoading={isLoading}
         />
       </div>
       <div className="w-4/5 h-10 mx-auto mb-5">{children}</div>
@@ -170,7 +181,13 @@ function AuthForm({ signUpForm, children, getCurrentUser, toggleForm }: AuthForm
   );
 }
 
-function Auth({ getCurrentUser, getCurrentUserFromGoogle, widthForGoogleButton }: AuthParentProps) {
+function Auth({
+  getCurrentUser,
+  getCurrentUserFromGoogle,
+  error,
+  isLoading,
+  widthForGoogleButton,
+}: AuthParentProps) {
   const [signUpForm, toggleForm] = useState(false);
 
   function handleToogle() {
@@ -188,6 +205,8 @@ function Auth({ getCurrentUser, getCurrentUserFromGoogle, widthForGoogleButton }
             signUpForm={signUpForm}
             getCurrentUser={getCurrentUser}
             toggleForm={handleToogle}
+            error={error}
+            isLoading={isLoading}
           >
             <GoogleLogin
               text={signUpForm ? GOOGLE_BUTTON.signUpText : GOOGLE_BUTTON.signInText}
