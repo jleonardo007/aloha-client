@@ -7,6 +7,7 @@ import {
 } from 'src/service-hooks/auth';
 import { UserCredentials } from 'src/types/auth';
 import { UserData } from 'src/graphql/types/user';
+import { readUser } from 'src/utils/local-storage';
 
 const user: UserData = {
   _id: '',
@@ -31,7 +32,7 @@ export default function useCurrentUser() {
     useSignUpWithGoogle();
 
   const currentUser: UserData | null | undefined =
-    signInData || signUpData || googleSignInData || googleSignUpData;
+    readUser() || signInData || signUpData || googleSignInData || googleSignUpData;
   const isLoading =
     isSignInLoading || isSignUpLoading || isGoogleSignInLoading || isGoogleSignUpLoading;
   const error = signInError || signUpError || googleSignInError || googleSignUpError;
