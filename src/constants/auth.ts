@@ -75,3 +75,5 @@ export const ERROR_MESSAGES = {
   fullName: 'too long name',
   required: 'this field is required',
 };
+
+export const AUTH_STORAGE = 'user_data';
