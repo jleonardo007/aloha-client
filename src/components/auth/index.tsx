@@ -19,6 +19,7 @@ import Input from 'src/components/common/input';
 import Button from 'src/components/common/button';
 import loginBackground from 'src/resources/images/aloha-login-bg.svg';
 import loginImage from 'src/resources/images/login-image.webp';
+import logo from 'src/resources/images/aloha-logo.webp';
 
 function AuthLinks({ text, linkText, onClick }: AuthLinksProps) {
   return (
@@ -119,10 +120,17 @@ function AuthForm({
   }
 
   return (
-    <form className="h-full pt-4" onSubmit={submitHandler} noValidate>
-      <h1 className="mb-4 ml-8 text-4xl text-gray-700 capitalize">{AUTH_TEXTS.mainText}</h1>
+    <form className="h-full pt-20 lg:pt-4" onSubmit={submitHandler} noValidate>
+      <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full border-4 border-green-500 lg:hidden">
+        <img className="w-full h-full" src={logo} alt="aloha-logo" />
+      </div>
+      <h1 className="mb-4 text-2xl text-center lg:text-4xl lg:ml-8 lg:text-left text-gray-700 capitalize">
+        {AUTH_TEXTS.mainText}
+      </h1>
       {error && (
-        <h2 className="mb-4 text-center text-xl text-red-600 capitalize">{error.message}</h2>
+        <h2 className="mb-4 text-center text-sm text-red-600 capitalize lg:text-xl">
+          {error.message}
+        </h2>
       )}
       {signUpForm && (
         <div className="w-4/5 mx-auto mb-2">
@@ -196,11 +204,11 @@ function Auth({
 
   return (
     <section
-      className={`w-full h-screen grid place-content-center bg-cover  font-display`}
+      className="h-screen font-display lg:grid lg:place-content-center lg:bg-cover"
       style={{ backgroundImage: `url(${loginBackground})` }}
     >
-      <div className="flex w-[65vw] h-[65vh] rounded-[2.5rem] p-8 bg-white">
-        <div className="w-2/5 h-full">
+      <div className="h-full lg:flex lg:w-[65vw] lg:h-[65vh] lg:rounded-[2.5rem] lg:p-8 bg-white">
+        <div className="h-full lg:w-2/5">
           <AuthForm
             signUpForm={signUpForm}
             getCurrentUser={getCurrentUser}
@@ -226,7 +234,7 @@ function Auth({
           </AuthForm>
         </div>
         <div
-          className="w-3/5 h-full bg-contain bg-no-repeat bg-center"
+          className="h-full hidden lg:block lg:w-3/5 lg:bg-contain lg:bg-no-repeat lg:bg-center"
           style={{ backgroundImage: `url(${loginImage})` }}
         ></div>
       </div>
