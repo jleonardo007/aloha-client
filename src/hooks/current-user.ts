@@ -1,27 +1,13 @@
-import { createContext } from 'react';
 import {
   useSignInWithEmail,
   useSignUpWithEmail,
   useSignInWithGoogle,
   useSignUpWithGoogle,
 } from 'src/service-hooks/auth';
+import { CurrentUserContext } from 'src/context/current-user';
 import { UserCredentials } from 'src/types/auth';
 import { UserData } from 'src/graphql/types/user';
 import { readUser } from 'src/utils/local-storage';
-
-const user: UserData = {
-  _id: '',
-  accessToken: '',
-  contacts: [],
-  email: '',
-  fullName: '',
-  groups: [],
-  isClosedAccount: false,
-  lastTimeConnected: new Date(),
-  profilePicture: '',
-  status: 'Available',
-};
-const CurrentUserContext = createContext<UserData>(user);
 
 export default function useCurrentUser() {
   const { signInWithEmail, signInData, isSignInLoading, signInError } = useSignInWithEmail();
