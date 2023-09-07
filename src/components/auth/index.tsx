@@ -168,6 +168,7 @@ function AuthForm({
         <Button
           type={signUpForm ? BUTTONS.signUp.type : BUTTONS.signIn.type}
           label={signUpForm ? BUTTONS.signUp.label : BUTTONS.signIn.label}
+          className="w-full h-full capitalize rounded-[4px] bg-green-500 text-white"
           isLoading={isLoading}
         />
       </div>
