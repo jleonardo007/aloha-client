@@ -1,19 +1,22 @@
+import { ReactNode } from 'react';
 import Spinner from 'src/components/svg-icons/spinner';
 
 type ButtonProps = {
   type: 'button' | 'submit';
-  label: string;
+  label?: string;
+  className: string;
   disabled?: boolean;
   isLoading?: boolean;
+  children?: ReactNode;
   onClick?: () => void;
 };
 
 const loadingLabel = 'Processing...';
 
-function Button({ type, label, disabled, isLoading, onClick }: ButtonProps) {
+function Button({ type, label, className, disabled, isLoading, children, onClick }: ButtonProps) {
   if (isLoading) {
     return (
-      <button className="w-full h-full capitalize rounded-[4px] bg-green-500 text-white" disabled>
+      <button className={className} disabled>
         <Spinner className="h-5 w-5 inline-block mr-3" />
         {loadingLabel}
       </button>
@@ -21,13 +24,9 @@ function Button({ type, label, disabled, isLoading, onClick }: ButtonProps) {
   }
 
   return (
-    <button
-      className="w-full h-full capitalize rounded-[4px] bg-green-500 text-white"
-      type={type}
-      disabled={disabled}
-      onClick={onClick}
-    >
+    <button className={className} type={type} disabled={disabled} onClick={onClick}>
       {label}
+      {children}
     </button>
   );
 }
