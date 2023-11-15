@@ -7,7 +7,7 @@ import {
 import { CurrentUserContext } from 'src/context/current-user';
 import { UserCredentials } from 'src/types/auth';
 import { UserData } from 'src/graphql/types/user';
-import { readUser } from 'src/utils/local-storage';
+import { readUser, saveUser } from 'src/utils/local-storage';
 
 export default function useCurrentUser() {
   const { signInWithEmail, signInData, isSignInLoading, signInError } = useSignInWithEmail();
@@ -22,6 +22,10 @@ export default function useCurrentUser() {
   const isLoading =
     isSignInLoading || isSignUpLoading || isGoogleSignInLoading || isGoogleSignUpLoading;
   const error = signInError || signUpError || googleSignInError || googleSignUpError;
+
+  if (currentUser) {
+    saveUser(currentUser);
+  }
 
   function getCurrentUser(userCredentials: UserCredentials, isSignUp: boolean) {
     if (isSignUp) {

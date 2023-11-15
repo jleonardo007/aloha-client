@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Auth from 'src/components/auth';
 import useCurrentUser from 'src/hooks/current-user';
-import { saveUser } from 'src/utils/local-storage';
+import useAppTransitions from 'src/hooks/app-transtions';
 import { GOOGLE_CLIENT_ID } from 'src/constants/auth';
 
 function App() {
@@ -17,7 +17,6 @@ function App() {
   const [width, setWidth] = useState<number | undefined>(0);
 
   if (currentUser?._id) {
-    saveUser(currentUser);
     return (
       <CurrentUserContext.Provider value={currentUser}>
         <h1>UI</h1>
