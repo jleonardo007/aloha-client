@@ -24,6 +24,7 @@ function Input({ type, label, inputName, placeholder, required, errorMessage }: 
         name={inputName}
         placeholder={placeholder}
         required={required}
+        id={inputName}
       />
     </div>
   );
