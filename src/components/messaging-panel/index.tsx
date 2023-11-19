@@ -3,12 +3,13 @@ import { TransitionContext, TransitionsOptions } from 'src/context/app-transitio
 import Header from 'src/components/header';
 import Messaging from 'src/components/messaging';
 import AddButton from 'src/components/create-button';
+import ContactsPanel from 'src/components/contacts-panel';
 
 export default function MessagingPanel() {
   const { currentTransition } = useContext(TransitionContext);
 
   if (currentTransition === TransitionsOptions.contacts) {
-    return <h1>Contacts</h1>;
+    return <ContactsPanel />;
   }
 
   return (
