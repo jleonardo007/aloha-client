@@ -10,7 +10,7 @@ export default function CreateNew() {
 
   if (prevTransition === TransitionsOptions.calls) {
     return (
-      <div className="h-[calc(25vh-48px)]">
+      <div className="h-[calc(25vh-48px)] bg-slate-100">
         <div
           className="h-1/2 flex items-center px-6 active:bg-slate-200"
           role="presentation"
@@ -36,7 +36,7 @@ export default function CreateNew() {
   }
 
   return (
-    <div className="h-[calc(25vh-48px)]">
+    <div className="h-[calc(25vh-48px)] bg-slate-100">
       <div
         className="h-1/2 flex items-center px-6 active:bg-slate-200"
         role="presentation"
