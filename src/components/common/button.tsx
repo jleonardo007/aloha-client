@@ -3,6 +3,7 @@ import Spinner from 'src/components/svg-icons/spinner';
 
 type ButtonProps = {
   type: 'button' | 'submit';
+  icon: string;
   label?: string;
   className: string;
   disabled?: boolean;
@@ -13,7 +14,24 @@ type ButtonProps = {
 
 const loadingLabel = 'Processing...';
 
-function Button({ type, label, className, disabled, isLoading, children, onClick }: ButtonProps) {
+function Button({
+  type,
+  icon,
+  label,
+  className,
+  disabled,
+  isLoading,
+  children,
+  onClick,
+}: ButtonProps) {
+  if (icon) {
+    return (
+      <button className={className} type={type} disabled={disabled} onClick={onClick}>
+        <img className="w-full h-full" src={icon} alt={'icon'} />
+      </button>
+    );
+  }
+
   if (isLoading) {
     return (
       <button className={className} disabled>
