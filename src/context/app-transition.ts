@@ -8,7 +8,7 @@ export const enum TransitionsOptions {
 
 type TransitionContextProps = {
   currentTransition: TransitionsOptions;
-  prevTransition?: TransitionsOptions;
+  prevTransition: TransitionsOptions;
   changeTransition: (transition: TransitionsOptions, prevTransition: TransitionsOptions) => void;
 };
 
