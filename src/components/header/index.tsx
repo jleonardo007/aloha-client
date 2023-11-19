@@ -1,9 +1,8 @@
 import { useContext } from 'react';
 import { CurrentUserContext } from 'src/context/current-user';
 import Menu from 'src/components/menu';
+import { APP_TITLE } from 'src/constants/ui-constants';
 import defaultAvatar from 'src/resources/images/default-avatar.svg';
-
-const APP_TITLE = 'Aloha Chat';
 
 export default function Header() {
   const { profilePicture, fullName } = useContext(CurrentUserContext);

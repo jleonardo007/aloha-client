@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { TransitionContext, TransitionsOptions } from 'src/context/app-transition';
+import { TITLES_MESSAGING_TABS } from 'src/constants/ui-constants';
 
 export default function MessagingTabs() {
   const { currentTransition, changeTransition } = useContext(TransitionContext);
@@ -16,7 +17,7 @@ export default function MessagingTabs() {
             currentTransition === TransitionsOptions.chats ? 'text-slate-100' : 'text-slate-300'
           }`}
         >
-          Chats
+          {TITLES_MESSAGING_TABS.chats}
         </span>
         <div
           className={`w-full h-1 place-self-end ${
@@ -34,7 +35,7 @@ export default function MessagingTabs() {
             currentTransition === TransitionsOptions.calls ? 'text-slate-100' : 'text-slate-300'
           }`}
         >
-          Calls
+          {TITLES_MESSAGING_TABS.calls}
         </span>
         <div
           className={`w-full h-1 place-self-end ${
