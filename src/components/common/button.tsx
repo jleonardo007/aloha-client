@@ -3,7 +3,7 @@ import Spinner from 'src/components/svg-icons/spinner';
 
 type ButtonProps = {
   type: 'button' | 'submit';
-  icon: string;
+  icon?: string;
   label?: string;
   className: string;
   disabled?: boolean;
