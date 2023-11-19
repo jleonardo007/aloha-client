@@ -17,4 +17,15 @@ const TEXT_NODATA_VIEW = {
   contacts: 'no contacts',
 };
 
-export { APP_TITLE, TITLES_MESSAGING_TABS, TITLES_CREATE_NEW, TEXT_NODATA_VIEW };
+const CONTACTS_PANEL_HEADER = {
+  title: 'Contacts',
+  contactsAmount: (amount: number) => `${amount} contacts`,
+};
+
+export {
+  APP_TITLE,
+  TITLES_MESSAGING_TABS,
+  TITLES_CREATE_NEW,
+  TEXT_NODATA_VIEW,
+  CONTACTS_PANEL_HEADER,
+};
