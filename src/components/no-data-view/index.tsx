@@ -9,7 +9,7 @@ export default function NoDataView() {
 
   if (currentTransition === TransitionsOptions.contacts) {
     return (
-      <div className="h-[65vh]  bg-slate-100 pt-20">
+      <div className="h-[75vh] bg-slate-100 pt-20">
         <img src={noContactsIcon} className="w-20 h-20 mx-auto mb-4" alt="no contacts" />
         <span className="capitalize text-2xl text-center block">{`you don't have contacts yet`}</span>
       </div>
