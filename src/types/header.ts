@@ -4,6 +4,6 @@ export type HeaderProps = {
   title: string;
   subtitle?: string;
   slot?: ReactNode;
-  menu: ReactNode;
+  menu?: ReactNode;
   backButton?: ReactNode;
 };
