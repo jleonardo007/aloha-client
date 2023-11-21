@@ -22,10 +22,32 @@ const CONTACTS_PANEL_HEADER = {
   contactsAmount: (amount: number) => `${amount} contacts`,
 };
 
+const CREATE_CONTACT = {
+  headerTitle: 'Create Contact',
+  nameInput: {
+    type: 'text',
+    label: 'Name',
+    inputName: 'contactName',
+    placeholder: 'John Doe',
+    required: true,
+  },
+  emailInput: {
+    type: 'email',
+    label: 'Email',
+    inputName: 'contactEmail',
+    placeholder: 'johndoe@gmail.com',
+    required: true,
+  },
+  saveButton: {
+    label: 'Save',
+  },
+};
+
 export {
   APP_TITLE,
   TITLES_MESSAGING_TABS,
   TITLES_CREATE_NEW,
   TEXT_NODATA_VIEW,
   CONTACTS_PANEL_HEADER,
+  CREATE_CONTACT,
 };
