@@ -4,14 +4,16 @@ import { UserData } from 'src/graphql/types/user';
 const user: UserData = {
   _id: '',
   accessToken: '',
-  contacts: [],
   email: '',
   fullName: '',
-  groups: [],
   isClosedAccount: false,
   lastTimeConnected: new Date(),
   profilePicture: '',
   status: 'Available',
+  contacts: [],
+  groups: [],
+  chats: [],
+  calls: [],
 };
 
 export const CurrentUserContext = createContext(user);

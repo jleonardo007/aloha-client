@@ -4,17 +4,32 @@ export const USER_FRAGMENT = gql`
   fragment User on UserOutput {
     _id
     accessToken
-    contacts {
-      name
-    }
     email
     fullName
-    groups {
-      name
-    }
     isCloseAccount
     lastTimeConnected
     profilePicture
     status
+    contacts {
+      _id
+      name
+      user {
+        _id
+        fullName
+        profilePicture
+        status
+        lastTimeConnected
+        isCloseAccount
+      }
+    }
+    groups {
+      name
+    }
+    chats {
+      _id
+    }
+    calls {
+      _id
+    }
   }
 `;

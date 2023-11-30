@@ -1,12 +1,14 @@
-export interface UserData {
+export type UserData = {
   _id: string;
   accessToken: string;
-  contacts: [];
   email?: string;
   fullName: string;
-  groups: [];
   isClosedAccount: boolean;
   lastTimeConnected: Date;
   profilePicture: string;
   status: string;
-}
+  contacts: [];
+  groups: [];
+  chats: [];
+  calls: [];
+};
