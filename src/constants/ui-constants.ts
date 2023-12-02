@@ -27,14 +27,14 @@ const CREATE_CONTACT = {
   nameInput: {
     type: 'text',
     label: 'Name',
-    inputName: 'contactName',
+    inputName: 'name',
     placeholder: 'John Doe',
     required: true,
   },
   emailInput: {
     type: 'email',
     label: 'Email',
-    inputName: 'contactEmail',
+    inputName: 'email',
     placeholder: 'johndoe@gmail.com',
     required: true,
   },
