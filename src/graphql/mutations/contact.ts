@@ -1,6 +1,6 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
 import {
-  ContactResolversData,
+  ContactResolvers,
   DataFromContactService,
   CreateContactVariables,
   ContactVariable,
@@ -8,7 +8,7 @@ import {
 } from '../types/contact';
 
 export const ADD_CONTACT: TypedDocumentNode<
-  DataFromContactService<ContactResolversData.createContact>,
+  DataFromContactService<ContactResolvers.createContact>,
   CreateContactVariables
 > = gql`
   mutation createContact($createContactInput: CreateContactInput!) {
@@ -29,7 +29,7 @@ export const ADD_CONTACT: TypedDocumentNode<
 `;
 
 export const UPDATE_CONTACT: TypedDocumentNode<
-  DataFromContactService<ContactResolversData.updateContact>,
+  DataFromContactService<ContactResolvers.updateContact>,
   ContactVariable<ContactInputs.updateContact>
 > = gql`
   mutation updateContact($updateContactInput: UpdateContactInput!) {
@@ -40,7 +40,7 @@ export const UPDATE_CONTACT: TypedDocumentNode<
 `;
 
 export const DELETE_CONTACT: TypedDocumentNode<
-  DataFromContactService<ContactResolversData.deleteContact>,
+  DataFromContactService<ContactResolvers.deleteContact>,
   ContactVariable<ContactInputs.deleteContact>
 > = gql`
   mutation deleteContact($createContactInput: CreateContactInput!) {

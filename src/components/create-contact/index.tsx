@@ -112,7 +112,7 @@ export default function CreateContact({ setNoAction }: CreateContactProps) {
           errorMessage={errorMessages.email}
         />
         <div className="mb-10"></div>
-        {data?.createContactData && (
+        {data?.createContact && (
           <span className="block text-center text-xl text-teal-700">{CREATE_CONTACT.success}</span>
         )}
         {error && (

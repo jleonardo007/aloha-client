@@ -34,11 +34,11 @@ export type ContactVariable<Type extends string> = {
   };
 };
 
-export enum ContactResolversData {
-  createContact = 'createContactData',
-  getContact = 'getContactData',
-  updateContact = 'updateContactData',
-  deleteContact = 'deleteContactData',
+export enum ContactResolvers {
+  createContact = 'createContact',
+  getContact = 'getContact',
+  updateContact = 'updateContact',
+  deleteContact = 'deleteContact',
 }
 
 export type DataFromContactService<Type extends string> = {
