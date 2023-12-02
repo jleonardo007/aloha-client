@@ -41,6 +41,8 @@ const CREATE_CONTACT = {
   saveButton: {
     label: 'Save',
   },
+  success: 'Contact saved!',
+  failed: 'Cannot save this contact, please try later!',
 };
 
 export {

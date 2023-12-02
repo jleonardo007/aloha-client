@@ -25,6 +25,13 @@ export default function CreateContact({ setNoAction }: CreateContactProps) {
           placeholder={CREATE_CONTACT.emailInput.placeholder}
           required={CREATE_CONTACT.emailInput.required}
         />
+        <div className="mb-10"></div>
+        {data?.createContactData && (
+          <span className="block text-center text-xl text-teal-700">{CREATE_CONTACT.success}</span>
+        )}
+        {error && (
+          <span className="block text-center text-xl text-teal-700">{CREATE_CONTACT.failed}</span>
+        )}
         <Button
           type="button"
           label={CREATE_CONTACT.saveButton.label}
