@@ -20,8 +20,9 @@ export default function CreateContact({ setNoAction }: CreateContactProps) {
     name: '',
     email: '',
   });
-  const { _id } = useContext(CurrentUserContext);
-  const { createContact, data, loading, error } = useCreateContactService();
+  const { currentUser } = useContext(CurrentUserContext);
+  const { _id, accessToken } = currentUser;
+  const { createContact, data, loading, error } = useCreateContactService(accessToken);
 
   function validateInput({ name, email }: { name: string; email: string }) {
     let result = {
