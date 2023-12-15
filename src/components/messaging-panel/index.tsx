@@ -1,17 +1,18 @@
 import { useContext } from 'react';
 import { CurrentUserContext } from 'src/context/current-user';
 import { TransitionContext, TransitionsOptions } from 'src/context/app-transition';
+import { APP_TITLE } from 'src/constants/ui-constants';
+import defaultAvatar from 'src/resources/images/default-avatar.svg';
 import Header from 'src/components/header';
 import Messaging from 'src/components/messaging';
 import AddButton from 'src/components/create-button';
 import ContactsPanel from 'src/components/contacts-panel';
 import Menu from 'src/components/menu';
-import { APP_TITLE } from 'src/constants/ui-constants';
-import defaultAvatar from 'src/resources/images/default-avatar.svg';
 
 export default function MessagingPanel() {
   const { currentTransition } = useContext(TransitionContext);
-  const { profilePicture, fullName } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
+  const { profilePicture, fullName } = currentUser;
 
   if (currentTransition === TransitionsOptions.contacts) {
     return <ContactsPanel />;

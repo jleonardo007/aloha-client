@@ -4,7 +4,8 @@ import { CurrentUserContext } from 'src/context/current-user';
 import NoDataView from 'src/components/no-data-view';
 
 export default function CallsList() {
-  const { calls } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
+  const { calls } = currentUser;
 
   if (calls.length === 0) {
     return <NoDataView />;

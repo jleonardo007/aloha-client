@@ -3,7 +3,8 @@ import { CurrentUserContext } from 'src/context/current-user';
 import NoDataView from 'src/components/no-data-view';
 
 export default function ChatsList() {
-  const { chats } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
+  const { chats } = currentUser;
 
   if (chats.length === 0) {
     return <NoDataView />;

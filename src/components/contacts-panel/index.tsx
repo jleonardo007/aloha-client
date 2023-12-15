@@ -13,7 +13,8 @@ import { CONTACTS_PANEL_HEADER } from 'src/constants/ui-constants';
 
 export default function ContactsPanel() {
   const { prevTransition, changeTransition } = useContext(TransitionContext);
-  const { contacts } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
+  const { contacts } = currentUser;
   const [panelAction, setPanelAction] = useState(ContactsPanelActions.noAction);
 
   function goToPrevScreen() {
