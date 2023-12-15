@@ -31,7 +31,10 @@ export const SIGN_IN_WITH_GOOGLE: TypedDocumentNode<
   }
 `;
 
-export const GET_NEW_ACCESS_TOKEN: TypedDocumentNode<string, GetNewTokenVariables> = gql`
+export const GET_NEW_ACCESS_TOKEN: TypedDocumentNode<
+  { getNewAccessToken: string },
+  GetNewTokenVariables
+> = gql`
   query getNewAccessToken($getNewTokenInput: GetNewTokenInput!) {
     getNewAccessToken(getNewTokenInput: $getNewTokenInput)
   }
