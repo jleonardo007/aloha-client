@@ -1,31 +1,38 @@
-import { useState } from 'react';
+import { useState, useContext, useLayoutEffect } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { CurrentUserContext } from 'src/context/current-user';
+import { CurrentUserActions } from 'src/reducers/current-user';
+import { useLogin } from 'src/hooks/login';
+import { useAppTransitions } from 'src/hooks/app-transtions';
+import { GOOGLE_CLIENT_ID } from 'src/constants/auth';
+import { readUser } from 'src/utils/local-storage';
 import Auth from 'src/components/auth';
 import MessagingPanel from 'src/components/messaging-panel';
-import useCurrentUser from 'src/hooks/current-user';
-import useAppTransitions from 'src/hooks/app-transtions';
-import { GOOGLE_CLIENT_ID } from 'src/constants/auth';
 
 function App() {
-  const {
-    CurrentUserContext,
-    currentUser,
-    error,
-    isLoading,
-    getCurrentUser,
-    getCurrentUserFromGoogle,
-  } = useCurrentUser();
+  const { currentUser, dispatch } = useContext(CurrentUserContext);
+  const [width, setWidth] = useState<number | undefined>(0);
+  const { error, isLoading, getCurrentUser, getCurrentUserFromGoogle } = useLogin();
   const { currentTransition, prevTransition, changeTransition, TransitionContext } =
     useAppTransitions();
-  const [width, setWidth] = useState<number | undefined>(0);
+  const savedUser = readUser();
 
-  if (currentUser?._id) {
+  useLayoutEffect(() => {
+    if (!savedUser) {
+      return;
+    }
+    dispatch({
+      type: CurrentUserActions.GET_USER_FROM_LOCAL_STORAGE,
+      payload: savedUser,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (currentUser._id) {
     return (
-      <CurrentUserContext.Provider value={currentUser}>
-        <TransitionContext.Provider value={{ currentTransition, prevTransition, changeTransition }}>
-          <MessagingPanel />
-        </TransitionContext.Provider>
-      </CurrentUserContext.Provider>
+      <TransitionContext.Provider value={{ currentTransition, prevTransition, changeTransition }}>
+        <MessagingPanel />
+      </TransitionContext.Provider>
     );
   }
 
