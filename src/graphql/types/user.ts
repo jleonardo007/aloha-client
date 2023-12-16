@@ -1,3 +1,5 @@
+import { Contact } from './contact';
+
 export type UserData = {
   _id: string;
   accessToken: string;
@@ -7,7 +9,7 @@ export type UserData = {
   lastTimeConnected: Date;
   profilePicture: string;
   status: string;
-  contacts: [];
+  contacts: Contact[];
   groups: [];
   chats: [];
   calls: [];
