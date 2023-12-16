@@ -29,7 +29,7 @@ export const ADD_CONTACT: TypedDocumentNode<
 `;
 
 export const UPDATE_CONTACT: TypedDocumentNode<
-  DataFromContactService<ContactResolvers.updateContact>,
+  { message: string },
   ContactVariable<ContactInputs.updateContact>
 > = gql`
   mutation updateContact($updateContactInput: UpdateContactInput!) {
@@ -40,7 +40,7 @@ export const UPDATE_CONTACT: TypedDocumentNode<
 `;
 
 export const DELETE_CONTACT: TypedDocumentNode<
-  DataFromContactService<ContactResolvers.deleteContact>,
+  { message: string },
   ContactVariable<ContactInputs.deleteContact>
 > = gql`
   mutation deleteContact($createContactInput: CreateContactInput!) {

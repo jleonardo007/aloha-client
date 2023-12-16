@@ -42,5 +42,5 @@ export enum ContactResolvers {
 }
 
 export type DataFromContactService<Type extends string> = {
-  [key in Type]: Contact | string;
+  [key in Type]: Contact;
 };
