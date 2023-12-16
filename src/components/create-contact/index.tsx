@@ -1,9 +1,10 @@
-import { useState, useContext, FormEvent } from 'react';
+import { useState, useContext, useLayoutEffect, FormEvent } from 'react';
 import { CreateContactProps } from 'src/types/contacts-panel';
 import { CREATE_CONTACT } from 'src/constants/ui-constants';
 import { AUTH_VALIDATION, ERROR_MESSAGES } from 'src/constants/auth';
 import { useCreateContactService } from 'src/service-hooks/contact';
 import { CurrentUserContext } from 'src/context/current-user';
+import { CurrentUserActions } from 'src/reducers/current-user';
 import Header from 'src/components/header';
 import BackButton from 'src/components/common/back-button';
 import Input from 'src/components/common/input';
@@ -20,9 +21,21 @@ export default function CreateContact({ setNoAction }: CreateContactProps) {
     name: '',
     email: '',
   });
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, dispatch } = useContext(CurrentUserContext);
   const { _id, accessToken } = currentUser;
   const { createContact, data, loading, error } = useCreateContactService(accessToken);
+
+  useLayoutEffect(() => {
+    if (!data) {
+      return;
+    }
+
+    dispatch({
+      type: CurrentUserActions.ADD_NEW_CONTACT,
+      payload: data.createContact,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   function validateInput({ name, email }: { name: string; email: string }) {
     let result = {
