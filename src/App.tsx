@@ -1,9 +1,9 @@
 import { useState, useContext, useLayoutEffect } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { CurrentUserContext } from 'src/context/current-user';
+import { AppScreensProvider } from 'src/context/app-screens';
 import { CurrentUserActions } from 'src/reducers/current-user';
 import { useLogin } from 'src/hooks/login';
-import { useAppTransitions } from 'src/hooks/app-transtions';
 import { GOOGLE_CLIENT_ID } from 'src/constants/auth';
 import { readUser } from 'src/utils/local-storage';
 import Auth from 'src/components/auth';
@@ -13,8 +13,6 @@ function App() {
   const { currentUser, dispatch } = useContext(CurrentUserContext);
   const [width, setWidth] = useState<number | undefined>(0);
   const { error, isLoading, getCurrentUser, getCurrentUserFromGoogle } = useLogin();
-  const { currentTransition, prevTransition, changeTransition, TransitionContext } =
-    useAppTransitions();
   const savedUser = readUser();
 
   useLayoutEffect(() => {
@@ -30,9 +28,9 @@ function App() {
 
   if (currentUser._id) {
     return (
-      <TransitionContext.Provider value={{ currentTransition, prevTransition, changeTransition }}>
+      <AppScreensProvider>
         <MessagingPanel />
-      </TransitionContext.Provider>
+      </AppScreensProvider>
     );
   }
 
