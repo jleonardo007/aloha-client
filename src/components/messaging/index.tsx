@@ -1,17 +1,18 @@
 import { useContext } from 'react';
-import { TransitionContext, TransitionsOptions } from 'src/context/app-transition';
+import { ScreenContext } from 'src/context/app-screens';
+import { Screens } from 'src/reducers/app-screens';
 import MessagingTabs from 'src/components/messaging-tabs';
 import CallsList from 'src/components/calls-list';
 import ChatsList from 'src/components/chats-list';
 
 export default function Messaging() {
-  const { currentTransition } = useContext(TransitionContext);
+  const { currentScreen } = useContext(ScreenContext);
 
   return (
     <section className="min-h-[calc(100vh-48px)]">
       <MessagingTabs />
-      {currentTransition === TransitionsOptions.chats && <ChatsList />}
-      {currentTransition === TransitionsOptions.calls && <CallsList />}
+      {currentScreen === Screens.CHATS && <ChatsList />}
+      {currentScreen === Screens.CALLS && <CallsList />}
     </section>
   );
 }

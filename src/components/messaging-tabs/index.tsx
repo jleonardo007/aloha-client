@@ -1,45 +1,58 @@
 import { useContext } from 'react';
-import { TransitionContext, TransitionsOptions } from 'src/context/app-transition';
+import { ScreenContext } from 'src/context/app-screens';
+import { Screens, ScreenActions } from 'src/reducers/app-screens';
 import { TITLES_MESSAGING_TABS } from 'src/constants/ui-constants';
 
 export default function MessagingTabs() {
-  const { currentTransition, changeTransition } = useContext(TransitionContext);
+  const { prevScreen, currentScreen, changeScreen } = useContext(ScreenContext);
 
   return (
     <div className="h-10 flex bg-teal-700 border-b border-b-gray-300">
       <div
         className="w-1/2 grid place-items-center"
         role="presentation"
-        onClick={() => changeTransition(TransitionsOptions.chats, currentTransition)}
+        onClick={() => {
+          changeScreen({
+            type: ScreenActions.GO_TO_NEXT_SCREEN,
+            payload: {
+              currentScreen: Screens.CHATS,
+              prevScreen,
+            },
+          });
+        }}
       >
         <span
-          className={`${
-            currentTransition === TransitionsOptions.chats ? 'text-slate-100' : 'text-slate-300'
-          }`}
+          className={`${currentScreen === Screens.CHATS ? 'text-slate-100' : 'text-slate-300'}`}
         >
           {TITLES_MESSAGING_TABS.chats}
         </span>
         <div
           className={`w-full h-1 place-self-end ${
-            currentTransition === TransitionsOptions.chats && 'bg-slate-100'
+            currentScreen === Screens.CHATS && 'bg-slate-100'
           }`}
         ></div>
       </div>
       <div
         className="w-1/2 grid place-items-center"
         role="presentation"
-        onClick={() => changeTransition(TransitionsOptions.calls, currentTransition)}
+        onClick={() => {
+          changeScreen({
+            type: ScreenActions.GO_TO_NEXT_SCREEN,
+            payload: {
+              currentScreen: Screens.CALLS,
+              prevScreen,
+            },
+          });
+        }}
       >
         <span
-          className={`${
-            currentTransition === TransitionsOptions.calls ? 'text-slate-100' : 'text-slate-300'
-          }`}
+          className={`${currentScreen === Screens.CALLS ? 'text-slate-100' : 'text-slate-300'}`}
         >
           {TITLES_MESSAGING_TABS.calls}
         </span>
         <div
           className={`w-full h-1 place-self-end ${
-            currentTransition === TransitionsOptions.calls && 'bg-slate-100'
+            currentScreen === Screens.CALLS && 'bg-slate-100'
           }`}
         ></div>
       </div>

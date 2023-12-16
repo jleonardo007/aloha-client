@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { TransitionContext, TransitionsOptions } from 'src/context/app-transition';
+import { ScreenContext } from 'src/context/app-screens';
+import { Screens } from 'src/reducers/app-screens';
 import { TITLES_CREATE_NEW } from 'src/constants/ui-constants';
 import { ContactsPanelActions, CreateNewProps } from 'src/types/contacts-panel';
 import groupIcon from 'src/resources/icons/group.svg';
@@ -7,9 +8,9 @@ import contactIcon from 'src/resources/icons/add-contact.svg';
 import callLinkIcon from 'src/resources/icons/call-link.svg';
 
 export default function CreateNew({ goToCreateScreen }: CreateNewProps) {
-  const { prevTransition } = useContext(TransitionContext);
+  const { prevScreen } = useContext(ScreenContext);
 
-  if (prevTransition === TransitionsOptions.calls) {
+  if (prevScreen === Screens.CALLS) {
     return (
       <div className="h-[calc(25vh-48px)] bg-slate-100">
         <div

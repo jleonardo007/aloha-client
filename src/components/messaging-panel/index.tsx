@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { CurrentUserContext } from 'src/context/current-user';
-import { TransitionContext, TransitionsOptions } from 'src/context/app-transition';
+import { ScreenContext } from 'src/context/app-screens';
+import { Screens } from 'src/reducers/app-screens';
 import { APP_TITLE } from 'src/constants/ui-constants';
 import { useGetAccessTokenService } from 'src/service-hooks/access-token';
 import defaultAvatar from 'src/resources/images/default-avatar.svg';
@@ -11,13 +12,13 @@ import ContactsPanel from 'src/components/contacts-panel';
 import Menu from 'src/components/menu';
 
 export default function MessagingPanel() {
-  const { currentTransition } = useContext(TransitionContext);
+  const { currentScreen } = useContext(ScreenContext);
   const { currentUser } = useContext(CurrentUserContext);
   const { profilePicture, fullName } = currentUser;
 
   useGetAccessTokenService();
 
-  if (currentTransition === TransitionsOptions.contacts) {
+  if (currentScreen === Screens.CONTACTS) {
     return <ContactsPanel />;
   }
 

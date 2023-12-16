@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
-import { TransitionContext } from 'src/context/app-transition';
+import { ScreenContext } from 'src/context/app-screens';
 import { CurrentUserContext } from 'src/context/current-user';
+import { ScreenActions } from 'src/reducers/app-screens';
 import { ContactsPanelActions } from 'src/types/contacts-panel';
 import Header from 'src/components/header';
 import CreateNew from 'src/components/create-new';
@@ -12,13 +13,19 @@ import CreateContact from 'src/components/create-contact';
 import { CONTACTS_PANEL_HEADER } from 'src/constants/ui-constants';
 
 export default function ContactsPanel() {
-  const { prevTransition, changeTransition } = useContext(TransitionContext);
+  const { prevScreen, changeScreen } = useContext(ScreenContext);
   const { currentUser } = useContext(CurrentUserContext);
   const { contacts } = currentUser;
   const [panelAction, setPanelAction] = useState(ContactsPanelActions.noAction);
 
   function goToPrevScreen() {
-    changeTransition(prevTransition, prevTransition);
+    changeScreen({
+      type: ScreenActions.GO_TO_PREV_SCREEN,
+      payload: {
+        currentScreen: prevScreen,
+        prevScreen,
+      },
+    });
   }
 
   function goToCreateScreen(action: ContactsPanelActions) {
