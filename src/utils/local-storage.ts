@@ -13,3 +13,9 @@ export function readUser(): UserData | null {
   if (!localStorage.user_data) return null;
   return JSON.parse(localStorage.user_data);
 }
+
+export function updateUser(userData: UserData) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { accessToken, ...user } = userData;
+  localStorage.setItem(AUTH_STORAGE, JSON.stringify(user));
+}
