@@ -16,7 +16,7 @@ type CreateContactInput = {
   email: string;
 };
 
-export default function CreateContact({ setNoAction }: CreateContactProps) {
+export default function CreateContact({ goToScreen }: CreateContactProps) {
   const [errorMessages, setErrorMessages] = useState({
     name: '',
     email: '',
@@ -102,7 +102,7 @@ export default function CreateContact({ setNoAction }: CreateContactProps) {
 
   return (
     <section className="h-screen">
-      <Header title={CREATE_CONTACT.headerTitle} backButton={<BackButton back={setNoAction} />} />
+      <Header title={CREATE_CONTACT.headerTitle} backButton={<BackButton back={goToScreen} />} />
       <form
         className="min-h-[calc(100vh-48px)] px-10 pt-10 relative"
         onSubmit={submitHandler}

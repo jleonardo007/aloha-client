@@ -1,14 +1,14 @@
-export enum ContactsPanelActions {
-  noAction = 'no-action',
-  createCallLink = 'create-call-link',
-  createNewGroup = 'create-new-group',
-  createNewContact = 'create-new-contact',
+export enum ContactsPanelScreens {
+  CONTACTS_LIST = 'CONTACTS_LIST',
+  CREATE_CALL_LINK = 'CREATE_CALL_LINK',
+  CREATE_NEW_GROUP = 'CREATE_NEW_GROUP',
+  CREATE_NEW_CONTACT = 'CREATE_NEW_CONTACT',
 }
 
 export type CreateNewProps = {
-  goToCreateScreen: (action: ContactsPanelActions) => void;
+  goToScreen: (action: ContactsPanelScreens) => void;
 };
 
 export type CreateContactProps = {
-  setNoAction: () => void;
+  goToScreen: () => void;
 };

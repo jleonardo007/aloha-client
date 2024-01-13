@@ -2,7 +2,8 @@ import { useContext, useState } from 'react';
 import { ScreenContext } from 'src/context/app-screens';
 import { CurrentUserContext } from 'src/context/current-user';
 import { ScreenActions } from 'src/reducers/app-screens';
-import { ContactsPanelActions } from 'src/types/contacts-panel';
+import { ContactsPanelScreens } from 'src/types/contacts-panel';
+import { CONTACTS_PANEL_HEADER } from 'src/constants/ui-constants';
 import Header from 'src/components/header';
 import CreateNew from 'src/components/create-new';
 import ContactsList from 'src/components/contacts-list';
@@ -10,13 +11,12 @@ import Menu from 'src/components/menu';
 import BackButton from 'src/components/common/back-button';
 import SearchButton from 'src/components/common/search-button';
 import CreateContact from 'src/components/create-contact';
-import { CONTACTS_PANEL_HEADER } from 'src/constants/ui-constants';
 
 export default function ContactsPanel() {
   const { prevScreen, changeScreen } = useContext(ScreenContext);
   const { currentUser } = useContext(CurrentUserContext);
   const { contacts } = currentUser;
-  const [panelAction, setPanelAction] = useState(ContactsPanelActions.noAction);
+  const [panelScreens, setPanelScreens] = useState(ContactsPanelScreens.CONTACTS_LIST);
 
   function goToPrevScreen() {
     changeScreen({
@@ -28,19 +28,15 @@ export default function ContactsPanel() {
     });
   }
 
-  function goToCreateScreen(action: ContactsPanelActions) {
+  function goToScreen(screen: ContactsPanelScreens) {
     //add timeout to see clikc animation on create-new component
     setTimeout(() => {
-      setPanelAction(action);
-    }, 100);
+      setPanelScreens(screen);
+    }, 200);
   }
 
-  function setNoAction() {
-    setPanelAction(ContactsPanelActions.noAction);
-  }
-
-  if (panelAction === ContactsPanelActions.createNewContact) {
-    return <CreateContact setNoAction={setNoAction} />;
+  if (panelScreens === ContactsPanelScreens.CREATE_NEW_CONTACT) {
+    return <CreateContact goToScreen={() => goToScreen(ContactsPanelScreens.CONTACTS_LIST)} />;
   }
 
   return (
@@ -52,7 +48,7 @@ export default function ContactsPanel() {
         slot={<SearchButton enableSearch={() => {}} />}
         backButton={<BackButton back={goToPrevScreen} />}
       />
-      <CreateNew goToCreateScreen={goToCreateScreen} />
+      <CreateNew goToScreen={goToScreen} />
       <ContactsList />
     </section>
   );
