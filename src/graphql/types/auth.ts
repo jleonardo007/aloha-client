@@ -10,9 +10,9 @@ export interface GoogleAuthVariables {
   };
 }
 
-export interface GetNewTokenVariables {
-  getNewTokenInput: {
-    _id: string;
+export interface GetNewCredentialsVariable {
+  input: {
+    userId: string;
   };
 }
 

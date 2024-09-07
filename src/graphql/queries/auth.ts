@@ -2,7 +2,7 @@ import { gql, TypedDocumentNode } from '@apollo/client';
 import {
   EmailAuthVariabes,
   GoogleAuthVariables,
-  GetNewTokenVariables,
+  GetNewCredentialsVariable,
 } from 'src/graphql/types/auth';
 import { UserFromAuthServices, AuthResolvers } from 'src/graphql/types/auth';
 import { USER_FRAGMENT } from 'src/graphql/fragments';
@@ -31,11 +31,18 @@ export const SIGN_IN_WITH_GOOGLE: TypedDocumentNode<
   }
 `;
 
-export const GET_NEW_ACCESS_TOKEN: TypedDocumentNode<
-  { getNewAccessToken: string },
-  GetNewTokenVariables
+export const VERIFY_CRENDENTIALS_COOKIE: TypedDocumentNode<{ verifyExpiredCredentials: string }> =
+  gql`
+    query verifyExpiredCredentials {
+      verifyExpiredCredentials
+    }
+  `;
+
+export const GET_NEW_CREDENTIALS_COOKIE: TypedDocumentNode<
+  { getNewCredential: string },
+  GetNewCredentialsVariable
 > = gql`
-  query getNewAccessToken($getNewTokenInput: GetNewTokenInput!) {
-    getNewAccessToken(getNewTokenInput: $getNewTokenInput)
+  query getNewCredential($input: CredentialInput!) {
+    getNewCredential(input: $input)
   }
 `;

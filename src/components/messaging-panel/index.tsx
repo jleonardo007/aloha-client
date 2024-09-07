@@ -3,7 +3,7 @@ import { CurrentUserContext } from 'src/context/current-user';
 import { ScreenContext } from 'src/context/app-screens';
 import { Screens } from 'src/reducers/app-screens';
 import { APP_TITLE } from 'src/constants/ui-constants';
-import { useGetAccessTokenService } from 'src/service-hooks/access-token';
+import { useGetNewCredentialsService } from 'src/service-hooks/access-token';
 import { updateUser } from 'src/utils/local-storage';
 import defaultAvatar from 'src/resources/images/default-avatar.svg';
 import Header from 'src/components/header';
@@ -17,7 +17,7 @@ export default function MessagingPanel() {
   const { currentUser } = useContext(CurrentUserContext);
   const { profilePicture, fullName } = currentUser;
 
-  useGetAccessTokenService();
+  useGetNewCredentialsService();
 
   useEffect(() => {
     if (!currentUser) return;

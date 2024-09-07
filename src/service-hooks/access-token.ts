@@ -1,66 +1,46 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useLayoutEffect, useContext } from 'react';
+import { useLayoutEffect, useEffect, useContext } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { GET_NEW_ACCESS_TOKEN } from 'src/graphql/queries/auth';
-import { REFRESH_ACCESS_TOKEN_INTERVAL } from 'src/constants/logic-constants';
+import { GET_NEW_CREDENTIALS_COOKIE, VERIFY_CRENDENTIALS_COOKIE } from 'src/graphql/queries/auth';
 import { CurrentUserContext } from 'src/context/current-user';
-import { CurrentUserActions } from 'src/reducers/current-user';
 
 /**
- * * This hook queries a new access token once user enters into the app
- * * and will query again 5 minutes before access token expires
+ * * This hook verifies if the credentials cookie was deleted from browser
+ * due expiration or unexpected erease while user is logged, if the cookie
+ * was ereased this hook runs a query to get a new credential cookie.
+ *
+ * * If there is an error when trying to get a new cookie this hook forces the logout,
+ * same when current user data is empty
  */
-export function useGetAccessTokenService() {
-  const { currentUser, dispatch } = useContext(CurrentUserContext);
-  const { _id, accessToken } = currentUser;
-  const [getNewAccessToken, { data }] = useLazyQuery(GET_NEW_ACCESS_TOKEN, {
+export function useGetNewCredentialsService() {
+  const { currentUser } = useContext(CurrentUserContext);
+  const [getNewCrendential, { error }] = useLazyQuery(GET_NEW_CREDENTIALS_COOKIE, {
+    fetchPolicy: 'network-only',
+  });
+  const [verifyCredentials, { data }] = useLazyQuery(VERIFY_CRENDENTIALS_COOKIE, {
     fetchPolicy: 'network-only',
   });
 
   useLayoutEffect(() => {
-    //get accessToken once component mount
-    if (accessToken) {
+    if (!currentUser) {
+      // TODO: run logout
       return;
     }
-
-    getNewAccessToken({
-      variables: {
-        getNewTokenInput: {
-          _id,
-        },
-      },
-    });
-  }, [accessToken]);
+    verifyCredentials();
+  }, []);
 
   useLayoutEffect(() => {
-    // get token with a defined interval
-    if (!accessToken) {
-      return;
-    }
-
-    const interval = setInterval(() => {
-      getNewAccessToken({
+    if (data?.verifyExpiredCredentials === 'CREDENTIALS_EXPIRED') {
+      getNewCrendential({
         variables: {
-          getNewTokenInput: {
-            _id,
-          },
+          input: { userId: currentUser._id },
         },
       });
-    }, REFRESH_ACCESS_TOKEN_INTERVAL);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [accessToken]);
+    }
+  }, [data]);
 
   useEffect(() => {
-    if (!data) {
-      return;
-    }
-
-    dispatch({
-      type: CurrentUserActions.GET_NEW_ACCESS_TOKEN,
-      payload: data.getNewAccessToken,
-    });
-  }, [data]);
+    console.log(error);
+    // TODO: run logout
+  }, [error]);
 }
