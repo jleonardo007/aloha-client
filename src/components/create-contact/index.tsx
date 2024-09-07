@@ -22,8 +22,8 @@ export default function CreateContact({ goToScreen }: CreateContactProps) {
     email: '',
   });
   const { currentUser, dispatch } = useContext(CurrentUserContext);
-  const { _id, accessToken } = currentUser;
-  const { createContact, data, loading, error } = useCreateContactService(accessToken);
+  const { _id } = currentUser;
+  const { createContact, data, loading, error } = useCreateContactService();
 
   useLayoutEffect(() => {
     if (!data) {

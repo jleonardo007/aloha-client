@@ -2,14 +2,8 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import { GET_CONTACT } from 'src/graphql/queries/contact';
 import { ADD_CONTACT, UPDATE_CONTACT, DELETE_CONTACT } from 'src/graphql/mutations/contact';
 
-export function useGetContactService(accessToken: string) {
-  const [getContact, { data, loading, error }] = useLazyQuery(GET_CONTACT, {
-    context: {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    },
-  });
+export function useGetContactService() {
+  const [getContact, { data, loading, error }] = useLazyQuery(GET_CONTACT);
 
   return {
     getContact,
@@ -19,14 +13,8 @@ export function useGetContactService(accessToken: string) {
   };
 }
 
-export function useCreateContactService(accessToken: string) {
-  const [createContact, { data, loading, error }] = useMutation(ADD_CONTACT, {
-    context: {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    },
-  });
+export function useCreateContactService() {
+  const [createContact, { data, loading, error }] = useMutation(ADD_CONTACT);
 
   return {
     createContact,
@@ -36,14 +24,8 @@ export function useCreateContactService(accessToken: string) {
   };
 }
 
-export function useUpdateContactService(accessToken: string) {
-  const [updateContact, { data, loading, error }] = useMutation(UPDATE_CONTACT, {
-    context: {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    },
-  });
+export function useUpdateContactService() {
+  const [updateContact, { data, loading, error }] = useMutation(UPDATE_CONTACT);
 
   return {
     updateContact,
@@ -53,14 +35,8 @@ export function useUpdateContactService(accessToken: string) {
   };
 }
 
-export function useDeleteContactService(accessToken: string) {
-  const [deleteContact, { data, loading, error }] = useMutation(DELETE_CONTACT, {
-    context: {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    },
-  });
+export function useDeleteContactService() {
+  const [deleteContact, { data, loading, error }] = useMutation(DELETE_CONTACT);
 
   return {
     deleteContact,
