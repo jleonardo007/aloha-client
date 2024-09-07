@@ -12,8 +12,8 @@ export const SIGN_UP_WITH_EMAIL: TypedDocumentNode<
   EmailAuthVariabes
 > = gql`
   ${USER_FRAGMENT}
-  mutation signUpWithEmail($signUpInput: CreateUserInput!) {
-    signUpWithEmail(signUpInput: $signUpInput) {
+  mutation signUpWithEmail($input: CreateUserInput!) {
+    signUpWithEmail(input: $input) {
       ...User
     }
   }
@@ -24,8 +24,8 @@ export const SIGN_UP_WITH_GOOGLE: TypedDocumentNode<
   GoogleAuthVariables
 > = gql`
   ${USER_FRAGMENT}
-  mutation signUpWithEmail($tokenInput: TokenInput!) {
-    signUpWithGoogle(tokenInput: $tokenInput) {
+  mutation signUpWithEmail($input: TokenInput!) {
+    signUpWithGoogle(input: $input) {
       ...User
     }
   }

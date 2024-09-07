@@ -90,7 +90,7 @@ export default function CreateContact({ goToScreen }: CreateContactProps) {
     if (isValid) {
       createContact({
         variables: {
-          createContactInput: {
+          input: {
             createdBy: _id,
             name: createContactInput.name,
             email: createContactInput.email,

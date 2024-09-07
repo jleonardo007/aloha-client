@@ -1,17 +1,12 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
-import {
-  ContactInputs,
-  ContactResolvers,
-  DataFromContactService,
-  ContactVariable,
-} from '../types/contact';
+import { ContactResolvers, DataFromContactService, ContactVariable } from '../types/contact';
 
 export const GET_CONTACT: TypedDocumentNode<
   DataFromContactService<ContactResolvers.getContact>,
-  ContactVariable<ContactInputs.getContact>
+  ContactVariable
 > = gql`
-  query getContact($getContactInput: GetContactInput!) {
-    getContact(getContactInput: $getContactInput) {
+  query getContact($input: GetContactInput!) {
+    getContact(input: $input) {
       _id
       name
       createdBy

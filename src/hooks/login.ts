@@ -42,12 +42,12 @@ export function useLogin() {
   function getCurrentUser(userCredentials: UserCredentials, isSignUp: boolean) {
     if (isSignUp) {
       signUpWithEmail({
-        variables: { signUpInput: { ...userCredentials } },
+        variables: { input: { ...userCredentials } },
       });
     } else {
       signInWithEmail({
         variables: {
-          signInInput: { email: userCredentials.email, password: userCredentials.password },
+          input: { email: userCredentials.email, password: userCredentials.password },
         },
       });
     }
@@ -57,13 +57,13 @@ export function useLogin() {
     if (isSignUp) {
       signUpWithGoogle({
         variables: {
-          tokenInput: { tokenFromGoogle: token },
+          input: { tokenFromGoogle: token },
         },
       });
     } else {
       signInWithGoogle({
         variables: {
-          tokenInput: { tokenFromGoogle: token },
+          input: { tokenFromGoogle: token },
         },
       });
     }

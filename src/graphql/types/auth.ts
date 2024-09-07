@@ -1,11 +1,11 @@
 import { UserData } from './user';
 
 export interface EmailAuthVariabes {
-  [key: string]: { fullName?: string; email: string; password: string };
+  input: { fullName?: string; email: string; password: string };
 }
 
 export interface GoogleAuthVariables {
-  tokenInput: {
+  input: {
     tokenFromGoogle: string;
   };
 }

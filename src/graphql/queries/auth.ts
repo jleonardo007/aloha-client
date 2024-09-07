@@ -12,8 +12,8 @@ export const SIGN_IN_WITH_EMAIL: TypedDocumentNode<
   EmailAuthVariabes
 > = gql`
   ${USER_FRAGMENT}
-  query signInWithEmail($signInInput: GetUserInput!) {
-    signInWithEmail(signInInput: $signInInput) {
+  query signInWithEmail($input: GetUserInput!) {
+    signInWithEmail(input: $input) {
       ...User
     }
   }
@@ -24,8 +24,8 @@ export const SIGN_IN_WITH_GOOGLE: TypedDocumentNode<
   GoogleAuthVariables
 > = gql`
   ${USER_FRAGMENT}
-  query signInWithGoogle($tokenInput: TokenInput!) {
-    signInWithGoogle(tokenInput: $tokenInput) {
+  query signInWithGoogle($input: TokenInput!) {
+    signInWithGoogle(input: $input) {
       ...User
     }
   }

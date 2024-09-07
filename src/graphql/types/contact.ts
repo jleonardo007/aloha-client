@@ -14,7 +14,7 @@ export type Contact = {
 };
 
 export type CreateContactVariables = {
-  createContactInput: {
+  input: {
     name: string;
     email: string;
     createdBy: string;
@@ -27,8 +27,8 @@ export enum ContactInputs {
   deleteContact = 'deleteContactInput',
 }
 
-export type ContactVariable<Type extends string> = {
-  [key in Type]: {
+export type ContactVariable = {
+  input: {
     id: string;
     name?: string;
   };

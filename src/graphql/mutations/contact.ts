@@ -4,15 +4,14 @@ import {
   DataFromContactService,
   CreateContactVariables,
   ContactVariable,
-  ContactInputs,
 } from '../types/contact';
 
 export const ADD_CONTACT: TypedDocumentNode<
   DataFromContactService<ContactResolvers.createContact>,
   CreateContactVariables
 > = gql`
-  mutation createContact($createContactInput: CreateContactInput!) {
-    createContact(createContactInput: $createContactInput) {
+  mutation createContact($input: CreateContactInput!) {
+    createContact(input: $input) {
       _id
       name
       createdBy
@@ -28,23 +27,17 @@ export const ADD_CONTACT: TypedDocumentNode<
   }
 `;
 
-export const UPDATE_CONTACT: TypedDocumentNode<
-  { message: string },
-  ContactVariable<ContactInputs.updateContact>
-> = gql`
-  mutation updateContact($updateContactInput: UpdateContactInput!) {
-    updateContact(updateContactInput: $updateContactInput) {
+export const UPDATE_CONTACT: TypedDocumentNode<{ message: string }, ContactVariable> = gql`
+  mutation updateContact($input: UpdateContactInput!) {
+    updateContact(input: $input) {
       message
     }
   }
 `;
 
-export const DELETE_CONTACT: TypedDocumentNode<
-  { message: string },
-  ContactVariable<ContactInputs.deleteContact>
-> = gql`
-  mutation deleteContact($createContactInput: CreateContactInput!) {
-    deleteContact(createContactInput: $creatContactInput) {
+export const DELETE_CONTACT: TypedDocumentNode<{ message: string }, ContactVariable> = gql`
+  mutation deleteContact($input: CreateContactInput!) {
+    deleteContact(input: $input) {
       message
     }
   }
