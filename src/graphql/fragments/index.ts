@@ -3,7 +3,6 @@ import { gql } from '@apollo/client';
 export const USER_FRAGMENT = gql`
   fragment User on UserOutput {
     _id
-    accessToken
     email
     fullName
     isCloseAccount
