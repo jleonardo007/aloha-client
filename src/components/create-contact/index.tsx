@@ -5,10 +5,10 @@ import { AUTH_VALIDATION, ERROR_MESSAGES } from 'src/constants/auth';
 import { useCreateContactService } from 'src/service-hooks/contact';
 import { CurrentUserContext } from 'src/context/current-user';
 import { CurrentUserActions } from 'src/reducers/current-user';
-import { Header } from 'src/components/header';
-import { BackButton } from 'src/components/common/back-button';
-import { Input } from 'src/components/common/input';
-import { Button } from 'src/components/common/button';
+import { Header } from 'src/components/ui/header';
+import { BackButton } from 'src/components/ui/back-button';
+import { Input } from 'src/components/ui/input';
+import { Button } from 'src/components/ui/button';
 
 type CreateContactInput = {
   [key: string]: FormDataEntryValue;

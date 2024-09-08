@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Spinner from 'src/components/svg-icons/spinner';
+import { Spinner } from './spinner';
 
 type ButtonProps = {
   type: 'button' | 'submit';

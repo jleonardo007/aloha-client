@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { CurrentUserContext } from 'src/context/current-user';
-import { NoDataView } from 'src/components/no-data-view';
+import { NoDataView } from 'src/components/ui/not-data-view';
 
 export function CallsList() {
   const { currentUser } = useContext(CurrentUserContext);

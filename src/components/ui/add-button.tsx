@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ScreenContext } from 'src/context/app-screens';
 import { Screens, ScreenActions } from 'src/reducers/app-screens';
-import { Button } from 'src/components/common/button';
+import { Button } from './button';
 import addMessage from 'src/resources/icons/add-message.svg';
 import addCall from 'src/resources/icons/add-call.svg';
 

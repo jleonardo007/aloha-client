@@ -15,8 +15,8 @@ import {
   Credentials,
   UserCredentials,
 } from 'src/types/auth';
-import { Input } from 'src/components/common/input';
-import { Button } from 'src/components/common/button';
+import { Input } from 'src/components/ui/input';
+import { Button } from 'src/components/ui/button';
 import loginBackground from 'src/resources/images/aloha-login-bg.svg';
 import loginImage from 'src/resources/images/login-image.webp';
 import logo from 'src/resources/images/aloha-logo.webp';

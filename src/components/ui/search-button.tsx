@@ -1,4 +1,4 @@
-import { Button } from 'src/components/common/button';
+import { Button } from './button';
 import searchIcon from 'src/resources/icons/search-icon.svg';
 
 type SearchButtonProps = {

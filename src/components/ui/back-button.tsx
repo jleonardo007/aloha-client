@@ -1,4 +1,4 @@
-import { Button } from 'src/components/common/button';
+import { Button } from './button';
 import backIcon from 'src/resources/icons/arrow-left.svg';
 
 type BackButtonProps = {
