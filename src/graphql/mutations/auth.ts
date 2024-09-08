@@ -1,9 +1,5 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
-import {
-  EmailAuthVariabes,
-  GoogleAuthVariables,
-  GetNewTokenVariables,
-} from 'src/graphql/types/auth';
+import { EmailAuthVariabes, GoogleAuthVariables } from 'src/graphql/types/auth';
 import { UserFromAuthServices, AuthResolvers } from 'src/graphql/types/auth';
 import { USER_FRAGMENT } from 'src/graphql/fragments';
 
@@ -28,11 +24,5 @@ export const SIGN_UP_WITH_GOOGLE: TypedDocumentNode<
     signUpWithGoogle(input: $input) {
       ...User
     }
-  }
-`;
-
-export const GET_NEW_REFRESH_TOKEN: TypedDocumentNode<string, GetNewTokenVariables> = gql`
-  mutation getNewRefreshToken($getNewTokenInput: GetNewTokenInput!) {
-    getNewRefreshToken(getNewTokenInput: $getNewTokenInput)
   }
 `;
