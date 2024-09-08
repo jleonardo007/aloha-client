@@ -4,7 +4,7 @@ export const enum ScreenActions {
 }
 
 export const enum Screens {
-  CHATS = 'CHAT',
+  CHATS = 'CHATS',
   CALLS = 'CALLS',
   CONTACTS = 'CONTACTS',
 }

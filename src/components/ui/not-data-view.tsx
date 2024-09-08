@@ -19,7 +19,7 @@ export function NoDataView() {
   }
 
   return (
-    <div className="h-[calc(100vh-88px)] bg-slate-100 pt-32 md:h-full md:pt-64">
+    <div className="h-[calc(100vh-88px)] bg-slate-100 pt-32 md:h-[calc(100vh-44px)] md:pt-64">
       {currentScreen === Screens.CHATS && (
         <img src={noMessagesIcon} className="w-20 h-20 mx-auto mb-4" alt="no messages" />
       )}

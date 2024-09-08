@@ -3,8 +3,8 @@ import NoAvatar from 'src/resources/images/default-avatar.svg';
 
 export function ContactCard({ name, user }: Contact) {
   return (
-    <div className="h-20 mb-2 px-6 flex items-center">
-      <div className="w-12 h-12 grid place-content-center md:w-24 md:h-24">
+    <div className="h-20 mb-2 px-6 flex items-center cursor-pointer">
+      <div className="w-12 h-12 grid place-content-center">
         <img
           src={user?.profilePicture ? user.profilePicture : NoAvatar}
           alt="avatar"
@@ -13,7 +13,7 @@ export function ContactCard({ name, user }: Contact) {
           }`}
         />
       </div>
-      <div className="flex flex-col ml-2 w-[calc(80vw-48px)]">
+      <div className="flex flex-col ml-2 w-[calc(80vw-48px)] md:w-full">
         <span className="text-base font-black">{name}</span>
         <p className="text-sm text-gray-500 truncate">{user?.status}</p>
       </div>

@@ -12,7 +12,7 @@ export function ContactsList() {
   }
 
   return (
-    <div className="bg-slate-100 md:h-full">
+    <div className="bg-slate-100 md:max-h-[calc(100vh-193px)] md:overflow-y-auto">
       {contacts.map((contact) => (
         <ContactCard key={contact._id} {...contact} />
       ))}

@@ -14,7 +14,7 @@ export function CreateNew({ goToScreen }: CreateNewProps) {
     <div className="h-[calc(25vh-48px)] bg-slate-100">
       {prevScreen === Screens.CALLS && (
         <div
-          className="h-1/2 flex items-center px-6 active:bg-slate-200"
+          className="h-1/2 flex items-center px-6 active:bg-slate-200 cursor-pointer"
           role="presentation"
           onClick={() => {
             goToScreen(ContactsPanelScreens.CREATE_CALL_LINK);
@@ -28,7 +28,7 @@ export function CreateNew({ goToScreen }: CreateNewProps) {
       )}
       {prevScreen === Screens.CHATS && (
         <div
-          className="h-1/2 flex items-center px-6 active:bg-slate-200"
+          className="h-1/2 flex items-center px-6 active:bg-slate-200 cursor-pointer"
           role="presentation"
           onClick={() => {
             goToScreen(ContactsPanelScreens.CREATE_NEW_GROUP);
@@ -41,7 +41,7 @@ export function CreateNew({ goToScreen }: CreateNewProps) {
         </div>
       )}
       <div
-        className="h-1/2 flex items-center px-6 active:bg-slate-200"
+        className="h-1/2 flex items-center px-6 active:bg-slate-200 cursor-pointer"
         role="presentation"
         onClick={() => {
           goToScreen(ContactsPanelScreens.CREATE_NEW_CONTACT);
