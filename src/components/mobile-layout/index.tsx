@@ -2,17 +2,17 @@ import { useContext, useEffect } from 'react';
 import { CurrentUserContext } from 'src/context/current-user';
 import { ScreenContext } from 'src/context/app-screens';
 import { Screens } from 'src/reducers/app-screens';
-import { APP_TITLE } from 'src/constants/ui-constants';
 import { useGetNewCredentialsService } from 'src/service-hooks/access-token';
+import { Header } from 'src/components/header';
+import { Messaging } from 'src/components/messaging';
+import { AddButton } from 'src/components/create-button';
+import { ContactsPanel } from 'src/components/contacts-panel';
+import { Menu } from 'src/components/menu';
+import { APP_TITLE } from 'src/constants/ui-constants';
 import { updateUser } from 'src/utils/local-storage';
 import defaultAvatar from 'src/resources/images/default-avatar.svg';
-import Header from 'src/components/header';
-import Messaging from 'src/components/messaging';
-import AddButton from 'src/components/create-button';
-import ContactsPanel from 'src/components/contacts-panel';
-import Menu from 'src/components/menu';
 
-export default function MessagingPanel() {
+export function MobileLayout() {
   const { currentScreen } = useContext(ScreenContext);
   const { currentUser } = useContext(CurrentUserContext);
   const { profilePicture, fullName } = currentUser;
@@ -26,11 +26,15 @@ export default function MessagingPanel() {
   }, [currentUser]);
 
   if (currentScreen === Screens.CONTACTS) {
-    return <ContactsPanel />;
+    return (
+      <section className="md:hidden">
+        <ContactsPanel />
+      </section>
+    );
   }
 
   return (
-    <>
+    <section className="md:hidden">
       <Header
         title={APP_TITLE}
         menu={<Menu />}
@@ -44,6 +48,6 @@ export default function MessagingPanel() {
       />
       <Messaging />
       <AddButton />
-    </>
+    </section>
   );
 }

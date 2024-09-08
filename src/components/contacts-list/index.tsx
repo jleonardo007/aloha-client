@@ -12,7 +12,7 @@ export function ContactsList() {
   }
 
   return (
-    <div className="bg-slate-100">
+    <div className="bg-slate-100 md:h-full">
       {contacts.map((contact) => (
         <ContactCard key={contact._id} {...contact} />
       ))}

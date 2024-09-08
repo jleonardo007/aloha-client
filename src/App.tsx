@@ -30,7 +30,8 @@ function App() {
   if (currentUser._id) {
     return (
       <AppScreensProvider>
-        <MessagingPanel />
+        <DesktopLayout />
+        <MobileLayout />
       </AppScreensProvider>
     );
   }

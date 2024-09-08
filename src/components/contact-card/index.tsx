@@ -4,7 +4,7 @@ import NoAvatar from 'src/resources/images/default-avatar.svg';
 export function ContactCard({ name, user }: Contact) {
   return (
     <div className="h-20 mb-2 px-6 flex items-center">
-      <div className="w-12 h-12 grid place-content-center">
+      <div className="w-12 h-12 grid place-content-center md:w-24 md:h-24">
         <img
           src={user?.profilePicture ? user.profilePicture : NoAvatar}
           alt="avatar"

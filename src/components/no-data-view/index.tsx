@@ -11,7 +11,7 @@ export function NoDataView() {
 
   if (currentScreen === Screens.CONTACTS) {
     return (
-      <div className="h-[75vh] bg-slate-100 pt-20">
+      <div className="h-[75vh] bg-slate-100 pt-20 md:h-full md:pt-60">
         <img src={noContactsIcon} className="w-20 h-20 mx-auto mb-4" alt="no contacts" />
         <span className="capitalize text-2xl text-center block">{TEXT_NODATA_VIEW.contacts}</span>
       </div>
@@ -19,7 +19,7 @@ export function NoDataView() {
   }
 
   return (
-    <div className="h-[calc(100vh-88px)] bg-slate-100 pt-32">
+    <div className="h-[calc(100vh-88px)] bg-slate-100 pt-32 md:h-full md:pt-64">
       {currentScreen === Screens.CHATS && (
         <img src={noMessagesIcon} className="w-20 h-20 mx-auto mb-4" alt="no messages" />
       )}
