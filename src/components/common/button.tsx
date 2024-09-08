@@ -14,7 +14,7 @@ type ButtonProps = {
 
 const loadingLabel = 'Processing...';
 
-function Button({
+export function Button({
   type,
   icon,
   label,
@@ -48,5 +48,3 @@ function Button({
     </button>
   );
 }
-
-export default Button;

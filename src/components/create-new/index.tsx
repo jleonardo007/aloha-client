@@ -7,7 +7,7 @@ import groupIcon from 'src/resources/icons/group.svg';
 import contactIcon from 'src/resources/icons/add-contact.svg';
 import callLinkIcon from 'src/resources/icons/call-link.svg';
 
-export default function CreateNew({ goToScreen }: CreateNewProps) {
+export function CreateNew({ goToScreen }: CreateNewProps) {
   const { prevScreen } = useContext(ScreenContext);
 
   return (

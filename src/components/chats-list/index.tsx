@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { CurrentUserContext } from 'src/context/current-user';
-import NoDataView from 'src/components/no-data-view';
+import { NoDataView } from 'src/components/no-data-view';
 
-export default function ChatsList() {
+export function ChatsList() {
   const { currentUser } = useContext(CurrentUserContext);
   const { chats } = currentUser;
 

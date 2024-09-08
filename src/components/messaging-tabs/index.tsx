@@ -3,7 +3,7 @@ import { ScreenContext } from 'src/context/app-screens';
 import { Screens, ScreenActions } from 'src/reducers/app-screens';
 import { TITLES_MESSAGING_TABS } from 'src/constants/ui-constants';
 
-export default function MessagingTabs() {
+export function MessagingTabs() {
   const { prevScreen, currentScreen, changeScreen } = useContext(ScreenContext);
 
   return (

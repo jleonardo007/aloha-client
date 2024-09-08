@@ -1,7 +1,7 @@
 import { Contact } from 'src/graphql/types/contact';
 import NoAvatar from 'src/resources/images/default-avatar.svg';
 
-export default function ContactCard({ name, user }: Contact) {
+export function ContactCard({ name, user }: Contact) {
   return (
     <div className="h-20 mb-2 px-6 flex items-center">
       <div className="w-12 h-12 grid place-content-center">

@@ -6,7 +6,7 @@ import noMessagesIcon from 'src/resources/icons/no-messages.svg';
 import noCalls from 'src/resources/icons/no-calls.svg';
 import noContactsIcon from 'src/resources/icons/no-contacts.svg';
 
-export default function NoDataView() {
+export function NoDataView() {
   const { currentScreen } = useContext(ScreenContext);
 
   if (currentScreen === Screens.CONTACTS) {

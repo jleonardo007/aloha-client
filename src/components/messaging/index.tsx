@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { ScreenContext } from 'src/context/app-screens';
 import { Screens } from 'src/reducers/app-screens';
-import MessagingTabs from 'src/components/messaging-tabs';
-import CallsList from 'src/components/calls-list';
-import ChatsList from 'src/components/chats-list';
+import { MessagingTabs } from 'src/components/messaging-tabs';
+import { CallsList } from 'src/components/calls-list';
+import { ChatsList } from 'src/components/chats-list';
 
-export default function Messaging() {
+export function Messaging() {
   const { currentScreen } = useContext(ScreenContext);
 
   return (

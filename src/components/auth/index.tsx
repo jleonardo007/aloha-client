@@ -15,8 +15,8 @@ import {
   Credentials,
   UserCredentials,
 } from 'src/types/auth';
-import Input from 'src/components/common/input';
-import Button from 'src/components/common/button';
+import { Input } from 'src/components/common/input';
+import { Button } from 'src/components/common/button';
 import loginBackground from 'src/resources/images/aloha-login-bg.svg';
 import loginImage from 'src/resources/images/login-image.webp';
 import logo from 'src/resources/images/aloha-logo.webp';
@@ -190,7 +190,7 @@ function AuthForm({
   );
 }
 
-function Auth({
+export function Auth({
   getCurrentUser,
   getCurrentUserFromGoogle,
   error,
@@ -242,5 +242,3 @@ function Auth({
     </section>
   );
 }
-
-export default Auth;

@@ -1,6 +1,6 @@
 import { HeaderProps } from 'src/types/header';
 
-export default function Header({ backButton, title, subtitle, slot, menu }: HeaderProps) {
+export function Header({ backButton, title, subtitle, slot, menu }: HeaderProps) {
   return (
     <header className="h-12 px-3 flex items-center bg-teal-700">
       {backButton}

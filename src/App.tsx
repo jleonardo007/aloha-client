@@ -4,10 +4,11 @@ import { CurrentUserContext } from 'src/context/current-user';
 import { AppScreensProvider } from 'src/context/app-screens';
 import { CurrentUserActions } from 'src/reducers/current-user';
 import { useLogin } from 'src/hooks/login';
+import { Auth } from 'src/components/auth';
+import { MobileLayout } from 'src/components/mobile-layout';
+import { DesktopLayout } from 'src/components/desktop-layout';
 import { GOOGLE_CLIENT_ID } from 'src/constants/auth';
 import { readUser } from 'src/utils/local-storage';
-import Auth from 'src/components/auth';
-import MessagingPanel from 'src/components/messaging-panel';
 
 function App() {
   const { currentUser, dispatch } = useContext(CurrentUserContext);

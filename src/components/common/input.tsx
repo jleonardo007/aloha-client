@@ -7,7 +7,7 @@ type InputProps = {
   errorMessage?: string;
 };
 
-function Input({ type, label, inputName, placeholder, required, errorMessage }: InputProps) {
+export function Input({ type, label, inputName, placeholder, required, errorMessage }: InputProps) {
   return (
     <div className="w-full">
       <label className="block  mb-1 text-sm text-gray-700" htmlFor={inputName}>
@@ -29,5 +29,3 @@ function Input({ type, label, inputName, placeholder, required, errorMessage }: 
     </div>
   );
 }
-
-export default Input;
