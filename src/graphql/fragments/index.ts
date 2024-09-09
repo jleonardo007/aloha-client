@@ -21,9 +21,6 @@ export const USER_FRAGMENT = gql`
         isCloseAccount
       }
     }
-    groups {
-      name
-    }
     chats {
       _id
     }
